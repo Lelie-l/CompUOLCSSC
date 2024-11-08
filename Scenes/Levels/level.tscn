@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bn4q4oybhoxd4"]
+[gd_scene load_steps=19 format=3 uid="uid://bn4q4oybhoxd4"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level.gd" id="1_e2dhp"]
 [ext_resource type="PackedScene" uid="uid://4jm41curqcp0" path="res://Scenes/Objects/player.tscn" id="2_i5rbt"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dd1fvp6pte6vp" path="res://Scenes/UI/health_bar.tscn" id="9_wn55x"]
 [ext_resource type="Texture2D" uid="uid://dk45kwc4vbwtv" path="res://Sprites/UI/SliderGrabber.png" id="11_ar7cl"]
 [ext_resource type="Texture2D" uid="uid://dwmmgsyfxts1d" path="res://icon.svg" id="12_mmavn"]
+[ext_resource type="PackedScene" uid="uid://cmtylfsc8ii8w" path="res://Scenes/Levels/intro.tscn" id="13_v0y3b"]
 [ext_resource type="Texture2D" uid="uid://cqq4eu1myya7v" path="res://Sprites/UI/HealthBar/HealthBar.png" id="15_n7hkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lsfkj"]
@@ -52,9 +53,10 @@ texture = ExtResource("12_mmavn")
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_0jc4h")]
 player = NodePath("../Player")
 boundaries = Vector2(5120, 3000)
-max_speed = 1000
+max_speed = 2000
 
 [node name="Player" parent="." instance=ExtResource("2_i5rbt")]
+position = Vector2(0, -5000)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -71,6 +73,9 @@ pause_screen = NodePath("../Paused")
 visible = false
 settings = NodePath("../Settings")
 
+[node name="Intro" parent="CanvasLayer" instance=ExtResource("13_v0y3b")]
+list = Array[String](["*You suddenly woke up in a dimly lit, cavernous warehouse. Lying helplessly on a disoriented, cold, concrete floor.  A glint of light catches their eye—a dumbbell, pulsing with an ethereal glow.*"])
+
 [node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("settings") instance=ExtResource("3_qavb3")]
 settings = NodePath("../Settings")
 
@@ -80,16 +85,16 @@ visible = false
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(768, 593)
+position = Vector2(117, 183)
 scale = Vector2(21.9295, 21.6875)
 texture = ExtResource("15_n7hkx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(708, 553)
+position = Vector2(-10, 166)
 shape = SubResource("RectangleShape2D_lsfkj")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(566, 423)
+position = Vector2(270, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
 modulate = Color(0, 0, 1, 1)
@@ -97,3 +102,6 @@ texture = ExtResource("12_mmavn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("RectangleShape2D_l7y7o")
+
+[connection signal="start" from="CanvasLayer/Intro" to="Player" method="_on_intro_start"]
+[connection signal="started" from="CanvasLayer/MainMenu" to="CanvasLayer/Intro" method="_on_main_menu_started"]

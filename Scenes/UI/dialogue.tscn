@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://c843yt0e8wbne"]
+
+[ext_resource type="Script" path="res://Scripts/UI/dialogue.gd" id="1_7rtjv"]
+[ext_resource type="PackedScene" uid="uid://ctaairp3gfv6l" path="res://Scenes/UI/TextAnim.tscn" id="1_yeoe5"]
+[ext_resource type="Texture2D" uid="uid://c5ae2faqd0urj" path="res://Sprites/Objects/New Piskel (7).png" id="2_cq312"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rtjv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 473.0
+offset_right = 1065.0
+offset_bottom = 684.0
+color = Color(0.306001, 0.170216, 0.00533197, 1)
+
+[node name="Label" parent="ColorRect" instance=ExtResource("1_yeoe5")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 0.0
+offset_right = -50.0
+offset_bottom = 0.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 174.0
+offset_right = 1367.0
+offset_bottom = 691.0
+rotation = 0.242601
+texture = ExtResource("2_cq312")
+stretch_mode = 4

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt8eqscnh0pkp"]
+
+[ext_resource type="Texture2D" uid="uid://cghludddtdmoy" path="res://Sprites/Decor/white_line.png" id="1_kca5j"]
+[ext_resource type="Script" path="res://Scripts/Decor/whiteline.gd" id="2_v3u7o"]
+
+[node name="Whiteline" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_kca5j")
+script = ExtResource("2_v3u7o")

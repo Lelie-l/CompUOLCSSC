@@ -22,12 +22,12 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	if player != null:
-		var cam_pos = global_position 
+		var cam_pos = global_position + Vector2(0,100)
 		var ply_pos = player.global_position
 		var cam_len = (cam_pos-ply_pos).length()
 		var spd = min(cam_len*2, max_speed) + 1 if cam_len < 300 else cam_len*3
 		var cam_dir = (ply_pos-cam_pos).normalized()
-		global_position += delta*spd*cam_dir
+		global_position += delta*spd*cam_dir 
 		
 		global_position.x = clamp(global_position.x, -boundaries.x, boundaries.x)
 		global_position.y = clamp(global_position.y, -boundaries.y, boundaries.y)

@@ -16,7 +16,9 @@ func _ready() -> void:
 	cover_pos.append($Cover5.position)
 
 func play() -> void:
+	if !Global.main_menu: return
 	Global.main_menu = false
+	Global.intro = true
 	started.emit()
 	$AnimationPlayer.play("play")
 
