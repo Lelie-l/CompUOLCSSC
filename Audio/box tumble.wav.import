@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dt1xhqc1d5tg4"
+path="res://.godot/imported/box tumble.wav-b6601893961513e04f998f2aaf33c712.sample"
+
+[deps]
+
+source_file="res://Audio/box tumble.wav"
+dest_files=["res://.godot/imported/box tumble.wav-b6601893961513e04f998f2aaf33c712.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

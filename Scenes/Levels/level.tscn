@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn4q4oybhoxd4"]
+[gd_scene load_steps=18 format=3 uid="uid://bn4q4oybhoxd4"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level.gd" id="1_e2dhp"]
 [ext_resource type="PackedScene" uid="uid://4jm41curqcp0" path="res://Scenes/Objects/player.tscn" id="2_i5rbt"]
@@ -14,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://dd1fvp6pte6vp" path="res://Scenes/UI/health_bar.tscn" id="9_wn55x"]
 [ext_resource type="Texture2D" uid="uid://dk45kwc4vbwtv" path="res://Sprites/UI/SliderGrabber.png" id="11_ar7cl"]
 [ext_resource type="Texture2D" uid="uid://dwmmgsyfxts1d" path="res://icon.svg" id="12_mmavn"]
+[ext_resource type="Texture2D" uid="uid://cqq4eu1myya7v" path="res://Sprites/UI/HealthBar/HealthBar.png" id="15_n7hkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsfkj"]
+size = Vector2(1628, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7y7o"]
+size = Vector2(128, 128)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("camera", "player", "redflash")]
 script = ExtResource("1_e2dhp")
@@ -22,7 +29,7 @@ player = NodePath("Player")
 redflash = NodePath("CanvasLayer/RedFlash")
 
 [node name="PlaceHolder (Delete This)" type="Sprite2D" parent="."]
-position = Vector2(-551, -142)
+position = Vector2(-194, 30)
 texture = ExtResource("5_27ox0")
 
 [node name="PauseH" type="Sprite2D" parent="PlaceHolder (Delete This)"]
@@ -44,6 +51,8 @@ texture = ExtResource("12_mmavn")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_0jc4h")]
 player = NodePath("../Player")
+boundaries = Vector2(5120, 3000)
+max_speed = 1000
 
 [node name="Player" parent="." instance=ExtResource("2_i5rbt")]
 
@@ -52,6 +61,7 @@ player = NodePath("../Player")
 [node name="RedFlash" parent="CanvasLayer" instance=ExtResource("9_f62e1")]
 
 [node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("9_wn55x")]
+visible = false
 player = NodePath("../../Player")
 
 [node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("pause_screen") instance=ExtResource("3_pacft")]
@@ -66,3 +76,24 @@ settings = NodePath("../Settings")
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("4_c3cnt")]
 visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(768, 593)
+scale = Vector2(21.9295, 21.6875)
+texture = ExtResource("15_n7hkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(708, 553)
+shape = SubResource("RectangleShape2D_lsfkj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(566, 423)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+modulate = Color(0, 0, 1, 1)
+texture = ExtResource("12_mmavn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_l7y7o")

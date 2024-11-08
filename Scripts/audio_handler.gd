@@ -14,8 +14,8 @@ func play(audioname:String, pitch_random:bool = false, volume:int=0,audio_variet
 	if audio_variety.size() >= 1:
 		file_name = "res://Audio/" + audioname + "/" + audio_variety.pick_random() + ".wav"
 	if !FileAccess.file_exists(file_name):
-		print("Audio name [" + file_name + "] does not exist")
-		return
+		pass
+		#print("Audio name [" + file_name + "] does not exist")
 	var node_instance = audionode.instantiate()
 	node_instance.stream = load(file_name)
 	if pitch_random:

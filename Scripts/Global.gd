@@ -1,5 +1,7 @@
 extends Node
 
+var main_menu = true
+
 var node_parent = null
 var player = null
 var camera = null
