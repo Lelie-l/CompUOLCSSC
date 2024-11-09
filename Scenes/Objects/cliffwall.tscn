@@ -1,0 +1,370 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn0i80b3wk5yj"]
+
+[ext_resource type="Texture2D" uid="uid://ck7mkvbcitt34" path="res://Sprites/Objects/cliff wall.png" id="1_b6uc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvubo"]
+size = Vector2(33, 1808)
+
+[node name="CliffWall" type="Area2D"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D4" type="Node2D" parent="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="Node2D/Node2D4"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D4/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D4/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D/Node2D4"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D4/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D4/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D/Node2D4"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D4/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D4/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D5" type="Node2D" parent="Node2D"]
+position = Vector2(0, -440)
+
+[node name="Node2D" type="Node2D" parent="Node2D/Node2D5"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D5/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D5/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D/Node2D5"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D5/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D5/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D/Node2D5"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D5/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D5/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D6" type="Node2D" parent="Node2D"]
+position = Vector2(0, -880)
+
+[node name="Node2D" type="Node2D" parent="Node2D/Node2D6"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D6/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D6/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D/Node2D6"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D6/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D6/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D/Node2D6"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D6/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D6/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D7" type="Node2D" parent="Node2D"]
+position = Vector2(0, -1320)
+
+[node name="Node2D" type="Node2D" parent="Node2D/Node2D7"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D7/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D7/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D/Node2D7"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D7/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D7/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D/Node2D7"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D/Node2D7/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D/Node2D7/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(-126, -1676)
+rotation = 3.14159
+
+[node name="Node2D4" type="Node2D" parent="Node2D2"]
+
+[node name="Node2D" type="Node2D" parent="Node2D2/Node2D4"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D4/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D4/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D2/Node2D4"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D4/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D4/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D2/Node2D4"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D4/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D4/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D5" type="Node2D" parent="Node2D2"]
+position = Vector2(0, -440)
+
+[node name="Node2D" type="Node2D" parent="Node2D2/Node2D5"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D5/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D5/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D2/Node2D5"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D5/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D5/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D2/Node2D5"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D5/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D5/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D6" type="Node2D" parent="Node2D2"]
+position = Vector2(0, -880)
+
+[node name="Node2D" type="Node2D" parent="Node2D2/Node2D6"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D6/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D6/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D2/Node2D6"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D6/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D6/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D2/Node2D6"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D6/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D6/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D7" type="Node2D" parent="Node2D2"]
+position = Vector2(0, -1320)
+
+[node name="Node2D" type="Node2D" parent="Node2D2/Node2D7"]
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D7/Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D7/Node2D"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D2" type="Node2D" parent="Node2D2/Node2D7"]
+position = Vector2(0, -128)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D7/Node2D2"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D7/Node2D2"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="Node2D3" type="Node2D" parent="Node2D2/Node2D7"]
+position = Vector2(0, -296)
+
+[node name="CliffWall" type="Sprite2D" parent="Node2D2/Node2D7/Node2D3"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CliffWall2" type="Sprite2D" parent="Node2D2/Node2D7/Node2D3"]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_b6uc6")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-62.5, -835)
+shape = SubResource("RectangleShape2D_bvubo")

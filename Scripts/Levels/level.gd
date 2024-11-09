@@ -16,3 +16,14 @@ func _process(delta: float) -> void:
 func _on_player_hit_signal() -> void:
 	redflash.flash(.5)
 	camera.shake(0.2,0.3)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	redflash.flash(.5)
+	camera.shake(0.2,0.3)
+	player.global_position = $Area2D/Marker2D.global_position
+
+
+func _on_win_area_entered(area: Area2D) -> void:
+	$CanvasLayer/ColorRect.show()
+	$CanvasLayer/AnimationPlayer.play("fade_out")

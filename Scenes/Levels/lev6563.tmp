@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bn4q4oybhoxd4"]
+[gd_scene load_steps=35 format=3 uid="uid://bn4q4oybhoxd4"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level.gd" id="1_e2dhp"]
 [ext_resource type="PackedScene" uid="uid://4jm41curqcp0" path="res://Scenes/Objects/player.tscn" id="2_i5rbt"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://o4wqoiia8usm" path="res://Sprites/Objects/warehouse_platform.png" id="14_kkgsb"]
 [ext_resource type="Texture2D" uid="uid://caaxyk304q5gb" path="res://Sprites/Objects/warehouse_tile.png" id="15_f1qep"]
 [ext_resource type="Texture2D" uid="uid://b36ysqxoql3yj" path="res://Sprites/Objects/warehouse_tile_nosupport.png" id="16_018ad"]
-[ext_resource type="PackedScene" uid="uid://bsxsmuc1kdx7b" path="res://Scenes/UI/dialogue7.tscn" id="17_xcvcm"]
 [ext_resource type="PackedScene" uid="uid://cqpi4g4ob64nr" path="res://Scenes/Objects/box.tscn" id="18_p3bbi"]
 [ext_resource type="Texture2D" uid="uid://mksmext85spb" path="res://Sprites/warehouse/warehouse_bg.png" id="19_3ajlb"]
 [ext_resource type="Script" path="res://Scripts/Levels/squat.gd" id="21_xspw1"]
@@ -28,44 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://csf1ccgejpk08" path="res://Scenes/Objects/pull_upbar.tscn" id="23_mq338"]
 [ext_resource type="Script" path="res://Scripts/Levels/pullup.gd" id="25_u6c02"]
 [ext_resource type="PackedScene" uid="uid://cn0i80b3wk5yj" path="res://Scenes/Objects/cliffwall.tscn" id="27_uwr2g"]
-
-[sub_resource type="Animation" id="Animation_eoohb"]
-resource_name = "fade_out"
-length = 5.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_8fq5v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rustf"]
-_data = {
-"RESET": SubResource("Animation_8fq5v"),
-"fade_out": SubResource("Animation_eoohb")
-}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgqdd"]
 resource_name = "Platform"
@@ -97,9 +58,6 @@ size = Vector2(160, 897)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqkix"]
 size = Vector2(1, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjav2"]
-size = Vector2(500, 500)
-
 [node name="Level" type="Node2D" node_paths=PackedStringArray("camera", "player", "redflash")]
 script = ExtResource("1_e2dhp")
 camera = NodePath("Camera2D")
@@ -112,7 +70,11 @@ boundaries = Vector2(5120, 3000)
 max_speed = 2000
 
 [node name="Player" parent="." node_paths=PackedStringArray("target_pullup") instance=ExtResource("2_i5rbt")]
-position = Vector2(0, -5000)
+position = Vector2(825, -1569)
+max_speed = 200
+coyote_time = 0.15
+acceleration = 16.0
+max_health = 100
 target_pullup = NodePath("../Pullup")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -155,30 +117,15 @@ visible = false
 list = Array[String](["\"Feel that power? Now, let's put it to the test. Time to scale that wall!\""])
 
 [node name="Intro" parent="CanvasLayer" instance=ExtResource("13_v0y3b")]
+visible = false
 list = Array[String](["*You suddenly woke up in a dimly lit, cavernous warehouse. Lying helplessly on a disoriented, cold, concrete floor.  A glint of light catches their eye—a dumbbell, pulsing with an ethereal glow.*"])
 
 [node name="MainMenu" parent="CanvasLayer" node_paths=PackedStringArray("settings") instance=ExtResource("3_qavb3")]
+visible = false
 settings = NodePath("../Settings")
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("4_c3cnt")]
 visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Dialogue7" parent="CanvasLayer" instance=ExtResource("17_xcvcm")]
-visible = false
-list = Array[String](["“Well done, champion! You've conquered the cavern and emerged victorious.”Remember, with a little hard work and determination, you can overcome any obstacle.” ", "“Until next time buddy”", "“Remember, KEEP ON EXERCISING!!!”"])
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-libraries = {
-"": SubResource("AnimationLibrary_rustf")
-}
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.5, 0.5)
@@ -363,7 +310,7 @@ position = Vector2(1178, -1497)
 speed = 300
 
 [node name="Pullup" type="Area2D" parent="."]
-position = Vector2(700, -1564)
+position = Vector2(600, -1564)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("25_u6c02")
@@ -375,21 +322,6 @@ position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_bqkix")
 
 [node name="CliffWall" parent="." instance=ExtResource("27_uwr2g")]
-position = Vector2(634, -1574)
-scale = Vector2(1, 0.8)
-
-[node name="CliffWall2" parent="." instance=ExtResource("27_uwr2g")]
-position = Vector2(839, -2442)
-scale = Vector2(1, 0.8)
-
-[node name="win" type="Area2D" parent="."]
-position = Vector2(796, -3619)
-collision_layer = 0
-collision_mask = 2048
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
-position = Vector2(-8, -195)
-shape = SubResource("RectangleShape2D_yjav2")
 
 [connection signal="hit_signal" from="Player" to="." method="_on_player_hit_signal"]
 [connection signal="intro_up" from="Player" to="CanvasLayer/Dialogue" method="_on_player_intro_up"]
@@ -407,5 +339,3 @@ shape = SubResource("RectangleShape2D_yjav2")
 [connection signal="body_entered" from="Squat" to="Squat" method="_on_body_entered"]
 [connection signal="body_entered" from="Pullup" to="CanvasLayer/Dialogue5" method="_on_pullup_body_entered"]
 [connection signal="body_entered" from="Pullup" to="Pullup" method="_on_body_entered"]
-[connection signal="area_entered" from="win" to="." method="_on_win_area_entered"]
-[connection signal="area_entered" from="win" to="CanvasLayer/Dialogue7" method="_on_win_area_entered"]

@@ -11,6 +11,8 @@ var curr_diff = -1
 
 var speed = 1
 
+var mode = 0
+
 signal correct_answer
 signal wrong
 
@@ -22,7 +24,10 @@ func _process(delta: float) -> void:
 	time += delta
 	
 	if !pressed:
-		$Arrow.position.x = sin(time*PI*speed)*11
+		if mode == 0:
+			$Arrow.position.x = sin(time*PI*speed)*11
+		elif mode == 1:
+			$Arrow.position.x = sin(time*PI*speed)**4*22-11
 	
 	if Input.is_action_just_pressed("space"):
 		pressed = true
@@ -45,6 +50,8 @@ func correct_anim():
 	$AnimationPlayer.play("correct")
 
 func load_in():
+	curr_diff = -1
+	speed = 1
 	show()
 	$AnimationPlayer.play("fade_in")
 
@@ -57,7 +64,10 @@ func start(increment:bool=false):
 		return
 	if increment:
 		curr_diff += 1
-		speed += 0.1
+		if mode == 0:
+			speed += 0.08
+		elif mode == 1:
+			speed += 0.02
 	pressed = false
 	started = true
 	$Target.scale.x = 6 - curr_diff/2.0

@@ -9,6 +9,8 @@ var node_parent = null
 var player = null
 var camera = null
 
+var win = false
+
 # Settings
 var screen_shake:bool = true
 

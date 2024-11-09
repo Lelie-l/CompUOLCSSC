@@ -1,6 +1,6 @@
 extends dialogue
 
-signal pushup_start
+signal pullup_start
 
 func _process(delta: float) -> void:
 	if done:
@@ -15,11 +15,13 @@ func _process(delta: float) -> void:
 				Global.dialogue = false
 				Global.qte = true
 				$AnimationPlayer.play("fade_out")
-				pushup_start.emit()
+				pullup_start.emit()
 				Audio.fade_music()
 				Audio.add_music(load("res://Audio/Music/ExerciseHipHop.wav"), true)
 		
 
-func _on_player_intro_up() -> void:
+
+func _on_pullup_body_entered(body: Node2D) -> void:
 	show()
 	move_text()
+	Global.dialogue = true

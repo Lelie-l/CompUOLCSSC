@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://e6w237xjc3cf"]
+[gd_scene load_steps=8 format=3 uid="uid://e6w237xjc3cf"]
 
 [ext_resource type="Script" path="res://Scripts/UI/combo.gd" id="1_3eo38"]
 [ext_resource type="FontFile" uid="uid://bs15oe3x0itwd" path="res://Fonts/test.ttf" id="1_461v2"]
@@ -75,9 +75,38 @@ tracks/0/keys = {
 "values": [Vector2(1.7, 1.7), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_03xkg"]
+resource_name = "fade_in"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvib3"]
 _data = {
 "RESET": SubResource("Animation_nw8g6"),
+"fade_in": SubResource("Animation_03xkg"),
 "fade_out": SubResource("Animation_vxv4o"),
 "flash": SubResource("Animation_4se43")
 }
@@ -110,3 +139,5 @@ theme_override_font_sizes/font_size = 32
 libraries = {
 "": SubResource("AnimationLibrary_uvib3")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

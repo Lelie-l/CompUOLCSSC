@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhal8mkkoaya1"]
+[gd_scene load_steps=15 format=3 uid="uid://dhal8mkkoaya1"]
 
 [ext_resource type="Texture2D" uid="uid://dfqbcm72bfra6" path="res://Sprites/Objects/QTE.png" id="1_5wg8n"]
 [ext_resource type="Script" path="res://Scripts/UI/qte.gd" id="1_aqae5"]
 [ext_resource type="Texture2D" uid="uid://w6gtc4u6yb0" path="res://Sprites/Objects/QTE_TARGEt.png" id="2_crfkd"]
 [ext_resource type="Texture2D" uid="uid://bachlpsxeqlai" path="res://Sprites/Objects/QTE_arrow.png" id="3_vxmj5"]
+[ext_resource type="FontFile" uid="uid://bs15oe3x0itwd" path="res://Fonts/test.ttf" id="5_7o1qe"]
+[ext_resource type="Script" path="res://Scripts/UI/label.gd" id="6_w6a0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_erndm"]
 size = Vector2(2, 2)
@@ -289,6 +291,17 @@ shape = SubResource("RectangleShape2D_ca5xg")
 libraries = {
 "": SubResource("AnimationLibrary_0glx2")
 }
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5.25
+offset_top = 2.75
+offset_right = 212.75
+offset_bottom = 46.75
+scale = Vector2(0.05, 0.05)
+theme_override_fonts/font = ExtResource("5_7o1qe")
+theme_override_font_sizes/font_size = 44
+text = "Press Space"
+script = ExtResource("6_w6a0q")
 
 [connection signal="area_entered" from="Arrow" to="." method="_on_arrow_area_entered"]
 [connection signal="area_exited" from="Arrow" to="." method="_on_arrow_area_exited"]

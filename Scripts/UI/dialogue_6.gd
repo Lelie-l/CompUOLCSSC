@@ -1,7 +1,5 @@
 extends dialogue
 
-signal pushup_start
-
 func _process(delta: float) -> void:
 	if done:
 		if Input.is_action_just_pressed("space"):
@@ -13,13 +11,15 @@ func _process(delta: float) -> void:
 				move_text()
 			else:
 				Global.dialogue = false
-				Global.qte = true
+				Global.qte = false
 				$AnimationPlayer.play("fade_out")
-				pushup_start.emit()
-				Audio.fade_music()
-				Audio.add_music(load("res://Audio/Music/ExerciseHipHop.wav"), true)
-		
+				#Audio.fade_music()
+				#Audio.add_music(load("res://Audio/Music/ExerciseHipHop.wav"), true)
+	
 
-func _on_player_intro_up() -> void:
+
+func _on_player_pullup_won() -> void:
+	Global.dialogue = true
+	await get_tree().create_timer(1).timeout
 	show()
 	move_text()

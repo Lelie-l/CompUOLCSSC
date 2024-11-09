@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4r3htp6bwak"]
+
+[ext_resource type="Texture2D" uid="uid://da83hmfnwxflk" path="res://Sprites/Objects/healthbarUnder.png" id="1_4r058"]
+[ext_resource type="Script" path="res://Scripts/UI/pullupbar.gd" id="1_tl84m"]
+[ext_resource type="Texture2D" uid="uid://lm2hoxb616a4" path="res://Sprites/Objects/healthbarProgress.png" id="2_ws6i7"]
+
+[node name="pullupbar" type="TextureProgressBar"]
+offset_right = 202.0
+offset_bottom = 67.0
+step = 0.01
+texture_under = ExtResource("1_4r058")
+texture_progress = ExtResource("2_ws6i7")
+script = ExtResource("1_tl84m")
