@@ -26,7 +26,7 @@ var white_line = preload("res://Scenes/Decor/whiteline.tscn")
 
 var pushing_up:bool = false
 
-var squat_unlocked = true
+var squat_unlocked = false
 var squatting = false
 
 var pullup_unlocked = false
