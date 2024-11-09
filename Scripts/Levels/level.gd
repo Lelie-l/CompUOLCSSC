@@ -10,9 +10,9 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("down"):
-		redflash.flash(.5)
-		camera.shake(0.2,0.3)
-		player.hit(5)
-	if Input.is_action_just_pressed("up"):
-		player.hit(-5)
+	pass
+
+
+func _on_player_hit_signal() -> void:
+	redflash.flash(.5)
+	camera.shake(0.2,0.3)

@@ -2,6 +2,8 @@ extends Node
 
 var main_menu = true
 var intro = false
+var dialogue = false
+var qte = false
 
 var node_parent = null
 var player = null

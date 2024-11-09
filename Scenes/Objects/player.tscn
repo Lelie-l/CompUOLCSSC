@@ -1,7 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://4jm41curqcp0"]
+[gd_scene load_steps=42 format=3 uid="uid://4jm41curqcp0"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/player.gd" id="1_lvxql"]
 [ext_resource type="Texture2D" uid="uid://cs7h3w1gi1o3m" path="res://Sprites/Objects/man_sprite.png" id="2_lswjw"]
+[ext_resource type="PackedScene" uid="uid://dhal8mkkoaya1" path="res://Scenes/UI/qte.tscn" id="3_5od1x"]
+[ext_resource type="PackedScene" uid="uid://e6w237xjc3cf" path="res://Scenes/UI/combo.tscn" id="4_2y3iu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otdct"]
 size = Vector2(40, 94)
@@ -90,13 +92,25 @@ region = Rect2(128, 1408, 64, 64)
 atlas = ExtResource("2_lswjw")
 region = Rect2(192, 1408, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_60d7q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6riri"]
 atlas = ExtResource("2_lswjw")
-region = Rect2(256, 1280, 64, 64)
+region = Rect2(0, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivix"]
+atlas = ExtResource("2_lswjw")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p5e1"]
+atlas = ExtResource("2_lswjw")
+region = Rect2(128, 1280, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7bln"]
 atlas = ExtResource("2_lswjw")
 region = Rect2(192, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60d7q"]
+atlas = ExtResource("2_lswjw")
+region = Rect2(256, 1280, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lf72k"]
 atlas = ExtResource("2_lswjw")
@@ -164,28 +178,28 @@ animations = [{
 "texture": SubResource("AtlasTexture_aacjh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aacjh")
+"texture": SubResource("AtlasTexture_vcsll")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vcsll")
@@ -280,6 +294,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6riri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ivix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p5e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7bln")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_60d7q")
 }, {
 "duration": 1.0,
@@ -287,13 +313,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lf72k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e7bln")
 }],
-"loop": true,
+"loop": false,
 "name": &"pushup",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -337,6 +360,20 @@ z_index = 2
 position = Vector2(0, -60)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_v22ig")
-animation = &"fall"
-frame = 13
+animation = &"pushup"
+frame = 6
 frame_progress = 1.0
+
+[node name="QTE" parent="." instance=ExtResource("3_5od1x")]
+visible = false
+z_index = 2
+position = Vector2(0, 41)
+scale = Vector2(8, 8)
+
+[node name="Combo" parent="." instance=ExtResource("4_2y3iu")]
+z_index = 10
+position = Vector2(-74, -143)
+
+[connection signal="correct_answer" from="QTE" to="." method="_on_qte_correct_answer"]
+[connection signal="won" from="QTE" to="." method="_on_qte_won"]
+[connection signal="wrong" from="QTE" to="." method="_on_qte_wrong"]

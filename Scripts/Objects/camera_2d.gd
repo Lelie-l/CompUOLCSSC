@@ -22,23 +22,34 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	if player != null:
-		var cam_pos = global_position + Vector2(0,100)
-		var ply_pos = player.global_position
-		var cam_len = (cam_pos-ply_pos).length()
-		var spd = min(cam_len*2, max_speed) + 1 if cam_len < 300 else cam_len*3
-		var cam_dir = (ply_pos-cam_pos).normalized()
-		global_position += delta*spd*cam_dir 
-		
-		global_position.x = clamp(global_position.x, -boundaries.x, boundaries.x)
-		global_position.y = clamp(global_position.y, -boundaries.y, boundaries.y)
-		
-		
-		var target_offset = (get_global_mouse_position() - cam_pos)* mouse_distance
-		
-		var cam_len2 = (offset-target_offset).length()
-		var spd2 = min(cam_len2*4, 200) + 20
-		offset = offset.move_toward(target_offset, delta * spd2)
-
+		if !Global.qte:
+			var cam_pos = global_position + Vector2(0,80)
+			var ply_pos = player.global_position
+			var cam_len = (cam_pos-ply_pos).length()
+			var spd = min(cam_len*2, max_speed) + 1 if cam_len < 300 else cam_len*3
+			var cam_dir = (ply_pos-cam_pos).normalized()
+			global_position += delta*spd*cam_dir 
+			
+			global_position.x = clamp(global_position.x, -boundaries.x, boundaries.x)
+			global_position.y = clamp(global_position.y, -boundaries.y, boundaries.y)
+			
+			
+			zoom = zoom.move_toward(Vector2(1,1), delta*(zoom.x))
+			var target_offset = (get_global_mouse_position() - cam_pos)* mouse_distance
+			
+			var cam_len2 = (offset-target_offset).length()
+			var spd2 = min(cam_len2*4, 200) + 20
+			offset = offset.move_toward(target_offset, delta * spd2)
+		else:
+			var cam_pos = global_position + Vector2(0,80)
+			var ply_pos = player.global_position
+			var cam_len = (cam_pos-ply_pos).length()
+			var spd = min(cam_len*2, max_speed) + 1 if cam_len < 300 else cam_len*3
+			var cam_dir = (ply_pos-cam_pos).normalized()
+			global_position += delta*spd*cam_dir 
+			zoom = zoom.move_toward(Vector2(2,2), delta*(2.5-zoom.x))
+			global_position.x = clamp(global_position.x, -boundaries.x, boundaries.x)
+			global_position.y = clamp(global_position.y, -boundaries.y, boundaries.y)
 
 func shake(new_magnitude,lifetime):
 	if magnitude*timeleft > new_magnitude*lifetime or !Global.screen_shake: return

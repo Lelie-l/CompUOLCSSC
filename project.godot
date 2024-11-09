@@ -25,7 +25,6 @@ Audio="*res://Scenes/AudioHandler.tscn"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [input]
 
@@ -55,8 +54,14 @@ space={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_5="qtetarget"
+2d_physics/layer_6="qtearrow"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.133333, 0.192157, 0.32549, 1)

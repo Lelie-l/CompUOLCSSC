@@ -1,54 +1,28 @@
-[gd_scene load_steps=19 format=3 uid="uid://bn4q4oybhoxd4"]
+[gd_scene load_steps=16 format=3 uid="uid://bn4q4oybhoxd4"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level.gd" id="1_e2dhp"]
 [ext_resource type="PackedScene" uid="uid://4jm41curqcp0" path="res://Scenes/Objects/player.tscn" id="2_i5rbt"]
 [ext_resource type="PackedScene" uid="uid://bdj6gftn4smd7" path="res://Scenes/UI/pause_button.tscn" id="3_pacft"]
 [ext_resource type="PackedScene" uid="uid://c1wqsr211losi" path="res://Scenes/Levels/main_menu.tscn" id="3_qavb3"]
 [ext_resource type="PackedScene" uid="uid://bvwfbqlt6n7bo" path="res://Scenes/Levels/settings.tscn" id="4_c3cnt"]
-[ext_resource type="Texture2D" uid="uid://k03u1a34eu1n" path="res://Sprites/UI/Pause.png" id="5_27ox0"]
-[ext_resource type="Texture2D" uid="uid://ckx6wxx5anajc" path="res://Sprites/UI/Pause_P.png" id="6_2lm7d"]
 [ext_resource type="PackedScene" uid="uid://bc7pmn6214ho8" path="res://Scenes/Levels/paused.tscn" id="6_pygct"]
 [ext_resource type="PackedScene" uid="uid://c2k5dfsj2yv7l" path="res://Scenes/Objects/camera_2d.tscn" id="7_0jc4h"]
-[ext_resource type="Texture2D" uid="uid://dhxg4s50ac164" path="res://Sprites/UI/Pause_H.png" id="7_megag"]
 [ext_resource type="PackedScene" uid="uid://6w722ltf84gs" path="res://Scenes/UI/red_flash.tscn" id="9_f62e1"]
 [ext_resource type="PackedScene" uid="uid://dd1fvp6pte6vp" path="res://Scenes/UI/health_bar.tscn" id="9_wn55x"]
-[ext_resource type="Texture2D" uid="uid://dk45kwc4vbwtv" path="res://Sprites/UI/SliderGrabber.png" id="11_ar7cl"]
-[ext_resource type="Texture2D" uid="uid://dwmmgsyfxts1d" path="res://icon.svg" id="12_mmavn"]
+[ext_resource type="PackedScene" uid="uid://c843yt0e8wbne" path="res://Scenes/UI/dialogue.tscn" id="13_8olf6"]
+[ext_resource type="Texture2D" uid="uid://dekhl56djqk2y" path="res://Sprites/warehouse/warehouse_floor.png" id="13_hwouu"]
 [ext_resource type="PackedScene" uid="uid://cmtylfsc8ii8w" path="res://Scenes/Levels/intro.tscn" id="13_v0y3b"]
-[ext_resource type="Texture2D" uid="uid://cqq4eu1myya7v" path="res://Sprites/UI/HealthBar/HealthBar.png" id="15_n7hkx"]
+[ext_resource type="Texture2D" uid="uid://d2gg30tyd0y7d" path="res://Sprites/warehouse/depth_mask.png" id="18_rwxut"]
+[ext_resource type="Texture2D" uid="uid://mksmext85spb" path="res://Sprites/warehouse/warehouse_bg.png" id="19_3ajlb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lsfkj"]
 size = Vector2(1628, 133)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7y7o"]
-size = Vector2(128, 128)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("camera", "player", "redflash")]
 script = ExtResource("1_e2dhp")
 camera = NodePath("Camera2D")
 player = NodePath("Player")
 redflash = NodePath("CanvasLayer/RedFlash")
-
-[node name="PlaceHolder (Delete This)" type="Sprite2D" parent="."]
-position = Vector2(-194, 30)
-texture = ExtResource("5_27ox0")
-
-[node name="PauseH" type="Sprite2D" parent="PlaceHolder (Delete This)"]
-position = Vector2(726, -246)
-texture = ExtResource("7_megag")
-
-[node name="PauseP" type="Sprite2D" parent="PlaceHolder (Delete This)"]
-position = Vector2(112, 497)
-texture = ExtResource("6_2lm7d")
-
-[node name="SliderGrabber" type="Sprite2D" parent="PlaceHolder (Delete This)"]
-position = Vector2(155, 160)
-texture = ExtResource("11_ar7cl")
-
-[node name="Icon" type="Sprite2D" parent="PlaceHolder (Delete This)"]
-modulate = Color(0.688999, 0, 0.273458, 1)
-position = Vector2(395, -283)
-texture = ExtResource("12_mmavn")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_0jc4h")]
 player = NodePath("../Player")
@@ -73,6 +47,10 @@ pause_screen = NodePath("../Paused")
 visible = false
 settings = NodePath("../Settings")
 
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource("13_8olf6")]
+visible = false
+list = Array[String](["“Well, well, well. Looks like we've got ourselves in a situation.\"", "“This warehouse isn't exactly the most welcoming place.”", "“But fear not, for I, Dumbbella, shall guide you through this ordeal!”", "\"Alright, champ. Now, you’ll need a little physical exertion after that deep slumber to power through this mess.”", "“Let's get those pecs pumping! Drop and give me ten!\""])
+
 [node name="Intro" parent="CanvasLayer" instance=ExtResource("13_v0y3b")]
 list = Array[String](["*You suddenly woke up in a dimly lit, cavernous warehouse. Lying helplessly on a disoriented, cold, concrete floor.  A glint of light catches their eye—a dumbbell, pulsing with an ethereal glow.*"])
 
@@ -82,26 +60,133 @@ settings = NodePath("../Settings")
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("4_c3cnt")]
 visible = false
 
+[node name="Backgrounds" type="Node2D" parent="."]
+modulate = Color(0.361067, 0.525121, 0.879435, 1)
+z_index = -10
+
+[node name="Bg7" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg8" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, 300)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg" type="Sprite2D" parent="Backgrounds"]
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="groundbg" type="Node2D" parent="Backgrounds"]
+
+[node name="Bg12" type="Sprite2D" parent="Backgrounds/groundbg"]
+position = Vector2(0, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg13" type="Sprite2D" parent="Backgrounds/groundbg"]
+position = Vector2(0, 300)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg14" type="Sprite2D" parent="Backgrounds/groundbg"]
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="groundbg2" type="Node2D" parent="Backgrounds"]
+position = Vector2(-1280, 0)
+
+[node name="Bg12" type="Sprite2D" parent="Backgrounds/groundbg2"]
+position = Vector2(0, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg13" type="Sprite2D" parent="Backgrounds/groundbg2"]
+position = Vector2(0, 300)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg14" type="Sprite2D" parent="Backgrounds/groundbg2"]
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="groundbg3" type="Node2D" parent="Backgrounds"]
+position = Vector2(1280, 0)
+
+[node name="Bg12" type="Sprite2D" parent="Backgrounds/groundbg3"]
+position = Vector2(0, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg13" type="Sprite2D" parent="Backgrounds/groundbg3"]
+position = Vector2(0, 300)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg14" type="Sprite2D" parent="Backgrounds/groundbg3"]
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="groundbg4" type="Node2D" parent="Backgrounds"]
+position = Vector2(1280, 0)
+
+[node name="Bg12" type="Sprite2D" parent="Backgrounds/groundbg4"]
+position = Vector2(0, 600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg13" type="Sprite2D" parent="Backgrounds/groundbg4"]
+position = Vector2(0, 300)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg14" type="Sprite2D" parent="Backgrounds/groundbg4"]
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg2" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, -600)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg3" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, -1200)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg4" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, -1800)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg5" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, -2400)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
+[node name="Bg6" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(0, -3000)
+scale = Vector2(4, 4)
+texture = ExtResource("19_3ajlb")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(117, 183)
-scale = Vector2(21.9295, 21.6875)
-texture = ExtResource("15_n7hkx")
+scale = Vector2(4, 4)
+texture = ExtResource("13_hwouu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-10, 166)
+position = Vector2(-13, 372)
 shape = SubResource("RectangleShape2D_lsfkj")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(270, 16)
+[node name="DepthMask" type="Sprite2D" parent="."]
+position = Vector2(1619, 805)
+scale = Vector2(4, 4)
+texture = ExtResource("18_rwxut")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-modulate = Color(0, 0, 1, 1)
-texture = ExtResource("12_mmavn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource("RectangleShape2D_l7y7o")
-
+[connection signal="hit_signal" from="Player" to="." method="_on_player_hit_signal"]
+[connection signal="intro_up" from="Player" to="CanvasLayer/Dialogue" method="_on_player_intro_up"]
+[connection signal="pushup_start" from="CanvasLayer/Dialogue" to="Player" method="_on_dialogue_pushup_start"]
 [connection signal="start" from="CanvasLayer/Intro" to="Player" method="_on_intro_start"]
 [connection signal="started" from="CanvasLayer/MainMenu" to="CanvasLayer/Intro" method="_on_main_menu_started"]

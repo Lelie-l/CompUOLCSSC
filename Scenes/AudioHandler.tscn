@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5y8p7tt1nl1t"]
+[gd_scene load_steps=4 format=3 uid="uid://c5y8p7tt1nl1t"]
 
 [ext_resource type="Script" path="res://Scripts/audio_handler.gd" id="1_rb31c"]
+[ext_resource type="PackedScene" uid="uid://duiqtxyllolol" path="res://Scenes/audio_music_player.tscn" id="2_17kw4"]
+[ext_resource type="AudioStream" uid="uid://lre1xgw2ro18" path="res://Audio/Music/MainMenuOST.wav" id="2_t3ma1"]
 
 [node name="AudioHandler" type="Node"]
 process_mode = 3
 script = ExtResource("1_rb31c")
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-process_mode = 3
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioMusicPlayer" parent="Music" instance=ExtResource("2_17kw4")]
+stream = ExtResource("2_t3ma1")

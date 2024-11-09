@@ -29,8 +29,8 @@ func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - Vector2(DisplayServer.screen_get_size())/2
 	
 	$Cover1.position = cover_pos[0] - mouse_pos * 0.01
-	$Cover2.position = cover_pos[1] - mouse_pos * 0.021
-	$Cover3.position = cover_pos[2] - mouse_pos * 0.0234
+	$Cover2.position = cover_pos[1] - mouse_pos * 0.031
+	$Cover3.position = cover_pos[2] - mouse_pos * 0.06
 	$Cover4.position = cover_pos[3] - mouse_pos * 0.06
 	$Cover5.position = cover_pos[4] - mouse_pos * 0.2
 

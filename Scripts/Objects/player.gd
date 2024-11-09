@@ -6,21 +6,30 @@ extends CharacterBody2D
 @export var acceleration:float = 16
 @export var max_health:int = 100
 
+var correct_particles = preload("res://Scenes/Decor/particles.tscn")
+
 # Movement Variables
 var dir := Vector2.ZERO
 var speed:float = 200
 var time_from_land = 0
 var jump_time = 0
 
+var animed=  false
+
 var intro:bool = true
 var intro_start:bool = false
 var intro_end:bool = false
 var white_line = preload("res://Scenes/Decor/whiteline.tscn")
 
+var pushing_up:bool = false
+
 # Player Properties
 var health:int = 100
 
 signal just_hit
+signal intro_up
+
+signal hit_signal
 
 func _ready() -> void:
 	# Sets Important Variable Values
@@ -29,7 +38,7 @@ func _ready() -> void:
 	health = max_health
 
 func _physics_process(delta: float) -> void:
-	if intro: return
+	if intro or Global.dialogue: return
 	if intro_start:
 		$Sprite.frame = 0
 		$Sprite.animation = "fall"
@@ -39,11 +48,21 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			intro_start = false
 			intro_end = true
+			Audio.play("landing")
 		return
 	if intro_end:
 		$Sprite.play("fall")
 		if $Sprite.frame == 22:
 			intro_end = false
+			Global.dialogue = true
+			intro_up.emit()
+			animed = true
+			Audio.play("pushup_back_up")
+		return
+	if pushing_up:
+		if animed: 
+			$Sprite.play("pushup")
+			animed = false
 		return
 	
 	# Handles Direction and Player Input
@@ -80,7 +99,7 @@ func _physics_process(delta: float) -> void:
 	# Handles Horizontal Sprite Flipping
 	if dir.x < 0:
 		$Sprite.flip_h = false
-	else:
+	elif dir.x > 0:
 		$Sprite.flip_h = true
 	
 	# Handles Final Movement
@@ -95,3 +114,33 @@ func hit(dmg:int):
 func _on_intro_start() -> void:
 	intro = false
 	intro_start = true
+
+
+func _on_dialogue_pushup_start() -> void:
+	pushing_up = true
+	$QTE.load_in()
+
+
+func _on_qte_correct_answer() -> void:
+	$Sprite.play("pushup")
+	$Sprite.frame = 2
+	$QTE.correct_anim()
+	$QTE.start(true)
+	$Combo.inc()
+	Audio.play("qtesuccess")
+	Global.instance_node(correct_particles, Global.node_parent, $QTE/Arrow.global_position)
+
+
+func _on_qte_wrong() -> void:
+	$QTE.wrong_anim()
+	$QTE.start()
+	hit_signal.emit()
+	$Combo.drop()
+	Audio.play("fail_pushup")
+
+
+func _on_qte_won() -> void:
+	pushing_up = false
+	$Combo.fade_out()
+	Audio.fade_music()
+	Audio.add_music(load("res://Audio/Music/MainMenuOST.wav"), true)

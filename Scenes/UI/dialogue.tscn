@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://c843yt0e8wbne"]
+[gd_scene load_steps=8 format=3 uid="uid://c843yt0e8wbne"]
 
 [ext_resource type="Script" path="res://Scripts/UI/dialogue.gd" id="1_7rtjv"]
 [ext_resource type="PackedScene" uid="uid://ctaairp3gfv6l" path="res://Scenes/UI/TextAnim.tscn" id="1_yeoe5"]
 [ext_resource type="Texture2D" uid="uid://c5ae2faqd0urj" path="res://Sprites/Objects/New Piskel (7).png" id="2_cq312"]
+[ext_resource type="Texture2D" uid="uid://bjfsu8rytxk8s" path="res://Sprites/Objects/Chatbox.png" id="2_la6x2"]
+
+[sub_resource type="Animation" id="Animation_rgxg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l3fnl"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk0nn"]
+_data = {
+"RESET": SubResource("Animation_rgxg2"),
+"fade_out": SubResource("Animation_l3fnl")
+}
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -13,13 +50,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7rtjv")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 473.0
-offset_right = 1065.0
-offset_bottom = 684.0
-color = Color(0.306001, 0.170216, 0.00533197, 1)
+offset_left = 25.0
+offset_top = 494.0
+offset_right = 1217.0
+offset_bottom = 694.0
+texture = ExtResource("2_la6x2")
+stretch_mode = 4
 
 [node name="Label" parent="ColorRect" instance=ExtResource("1_yeoe5")]
 layout_mode = 1
@@ -30,15 +68,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = 0.0
-offset_right = -50.0
+offset_right = -118.0
 offset_bottom = 0.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 877.0
-offset_top = 174.0
-offset_right = 1367.0
-offset_bottom = 691.0
+offset_left = 918.0
+offset_top = 203.0
+offset_right = 1408.0
+offset_bottom = 720.0
 rotation = 0.242601
 texture = ExtResource("2_cq312")
 stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uk0nn")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

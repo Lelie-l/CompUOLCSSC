@@ -13,6 +13,7 @@ func _on_main_menu_started() -> void:
 	for i in list:
 		var t_node = Global.instance_node(label, self)
 		t_node.add_text(i)
+		t_node.keyboard = true
 		await t_node.done
 	done = true
 	$AnimationPlayer.play("continue")
@@ -25,4 +26,5 @@ func _process(delta: float) -> void:
 			$AnimationPlayer.play("fade_out")
 			await get_tree().create_timer(1).timeout
 			hide()
+			Audio.play("falling")
 		

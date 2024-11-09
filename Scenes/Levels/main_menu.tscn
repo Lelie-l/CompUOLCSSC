@@ -1,23 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1wqsr211losi"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wqsr211losi"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/main_menu.gd" id="1_5ppt0"]
+[ext_resource type="Texture2D" uid="uid://d2m2hu075bjjt" path="res://Sprites/Cover/CoverBackground.jpg" id="2_s1s33"]
 [ext_resource type="FontFile" uid="uid://bs15oe3x0itwd" path="res://Fonts/test.ttf" id="2_s7nlr"]
+[ext_resource type="Texture2D" uid="uid://03vb75anybks" path="res://Sprites/Cover/cliff.png" id="3_espob"]
 [ext_resource type="PackedScene" uid="uid://gpyo8xrl20b8" path="res://Scenes/UI/text_button.tscn" id="3_wja8w"]
-
-[sub_resource type="Animation" id="Animation_7dgls"]
-resource_name = "play"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://cb3yc5lwcfov3" path="res://Sprites/Cover/stones.png" id="4_brb1k"]
 
 [sub_resource type="Animation" id="Animation_7r3fs"]
 length = 0.001
@@ -32,6 +20,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7dgls"]
+resource_name = "play"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r23no"]
@@ -55,26 +58,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_s1s33")
 
 [node name="Cover2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -395.0
+offset_top = -47.0
+offset_right = -255.0
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_espob")
+stretch_mode = 4
 
 [node name="Cover3" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -100.0
+offset_right = 87.0
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_brb1k")
+stretch_mode = 4
 
 [node name="Cover4" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,6 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Cover5" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
